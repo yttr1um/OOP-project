@@ -61,10 +61,7 @@ public class RegisterDialog extends JFrame {
         add(backBtn);
         add(registerBtn);
 
-        registerBtn.addActionListener(e -> {
-            dispose();
-            registerUser();
-        });
+        registerBtn.addActionListener(e -> registerUser());
 
         backBtn.addActionListener(e -> {
             dispose();
@@ -80,17 +77,47 @@ public class RegisterDialog extends JFrame {
         String phone = phoneInput.getText().trim();
         String password = new String(passwordInput.getPassword()).trim();
 
+        // Basic empty check
         if (name.isEmpty() || email.isEmpty() || phone.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Fields can not be left empty!");
-            new RegisterDialog();
+            JOptionPane.showMessageDialog(this, "Fields cannot be left empty!");
+            return;
         }
-        else {
-            new User(name, email, phone, password);
 
-            JOptionPane.showMessageDialog(this, "Registration complete.");
-            new LoginWindow(); // Open the Login Window
+        // Name validation
+        if (name.length() < 2) {
+            JOptionPane.showMessageDialog(this, "Name must be at least 2 characters.");
+            return;
         }
+
+        // Email validation
+        if (!email.contains("@") || !email.contains(".")) {
+            JOptionPane.showMessageDialog(this, "Invalid email format.");
+            return;
+        }
+
+        // Phone validation
+        if (!phone.matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "Phone number must contain only digits.");
+            return;
+        }
+        if (phone.length() < 8) {
+            JOptionPane.showMessageDialog(this, "Phone number must be at least 8 digits.");
+            return;
+        }
+
+        // Password validation
+        if (password.length() < 4) {
+            JOptionPane.showMessageDialog(this, "Password must be at least 4 characters.");
+            return;
+        }
+
+        new User(name, email, phone, password);
+
+        JOptionPane.showMessageDialog(this, "Registration complete.");
+        dispose();
+        new LoginWindow();
     }
+
 
     private void updateButtonState() {
         String name = nameInput.getText().trim();

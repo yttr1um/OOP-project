@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.io.*;
@@ -7,8 +8,11 @@ import java.util.Scanner;
 
 public class PantryDashboard extends JFrame {
 
-    private JButton logoutBtn, searchBtn, allBtn, expiringBtn, lowBtn;
-    private JButton addBtn, editBtn, deleteBtn, consumeBtn, restockBtn, generateShoppingListBtn;
+    private JButton searchBtn;
+    private JButton allBtn;
+    private JButton expiringBtn;
+    private JButton lowBtn;
+    private JLabel reportLabel, headerLabel;
     private JTextField searchField;
     private JTable table;
     private DefaultTableModel model;
@@ -42,15 +46,16 @@ public class PantryDashboard extends JFrame {
             }
         };
         table = new JTable(model);
+        table.setDefaultRenderer(Object.class, new ExpiryRowRenderer());
         JScrollPane scrollPane = new JScrollPane(table);
 
         JPanel actionPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        addBtn = new JButton("Add");
-        editBtn = new JButton("Edit");
-        deleteBtn = new JButton("Delete");
-        consumeBtn = new JButton("Consume");
-        restockBtn = new JButton("Restock");
-        generateShoppingListBtn = new JButton("Generate Shopping List");
+        JButton addBtn = new JButton("Add");
+        JButton editBtn = new JButton("Edit");
+        JButton deleteBtn = new JButton("Delete");
+        JButton consumeBtn = new JButton("Consume");
+        JButton restockBtn = new JButton("Restock");
+        JButton generateShoppingListBtn = new JButton("Generate Shopping List");
         actionPanel.add(addBtn);
         actionPanel.add(editBtn);
         actionPanel.add(deleteBtn);
@@ -70,9 +75,29 @@ public class PantryDashboard extends JFrame {
         restockBtn.addActionListener(e -> restockItem());
         generateShoppingListBtn.addActionListener(e -> openShoppingList());
 
+        // Report panel (bottom small window)
+        // Create a styled report panel (centered, colored)
+        JPanel reportPanel = new JPanel();
+        reportPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        reportPanel.setBackground(null);
+
+        reportLabel = new JLabel("Items: 0 | Low Stock: 0 | Expiring Soon: 0");
+        reportLabel.setFont(new Font("SansSerif", Font.BOLD, 14));
+        reportPanel.add(reportLabel);
+
+        // Wrap report panel ABOVE action buttons
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.setLayout(new BorderLayout());
+
+        bottomPanel.add(reportPanel, BorderLayout.NORTH);  // Report on top
+        bottomPanel.add(actionPanel, BorderLayout.SOUTH);  // Buttons under it
+
+        add(bottomPanel, BorderLayout.SOUTH);
+
+
+        add(bottomPanel, BorderLayout.SOUTH);
         add(topPanel, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
-        add(actionPanel, BorderLayout.SOUTH);
 
         loadItems();
 
@@ -89,18 +114,18 @@ public class PantryDashboard extends JFrame {
 
     private JPanel createHeader(String name) {
         JPanel header = new JPanel(new BorderLayout());
-        JLabel welcomeLabel = new JLabel("Welcome, " + name);
-        welcomeLabel.setFont(new Font("SansSerif", Font.BOLD, 20));
-        welcomeLabel.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 0));
+        headerLabel = new JLabel("Welcome, " + name);
+        headerLabel.setFont(new Font("SansSerif", Font.BOLD, 20));
+        headerLabel.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 0));
 
-        logoutBtn = new JButton("Log out");
+        JButton logoutBtn = new JButton("Log out");
         logoutBtn.setFocusable(false);
         logoutBtn.addActionListener(e -> {
             dispose();
             new LoginWindow();
         });
 
-        header.add(welcomeLabel, BorderLayout.WEST);
+        header.add(headerLabel, BorderLayout.WEST);
         header.add(logoutBtn, BorderLayout.EAST);
         return header;
     }
@@ -130,6 +155,7 @@ public class PantryDashboard extends JFrame {
             allItems.add(row);
             model.addRow(row);
             updateItemsFile();
+            updateReport();
         }
     }
 
@@ -149,6 +175,7 @@ public class PantryDashboard extends JFrame {
         model.removeRow(selectedRow);
 
         updateItemsFile();
+        updateReport();
     }
 
     private void editItem() {
@@ -177,6 +204,7 @@ public class PantryDashboard extends JFrame {
             for (int col = 1; col <= 6; col++)
                 model.setValueAt(row[col], selectedRow, col);
             updateItemsFile();
+            updateReport();
         }
     }
 
@@ -212,6 +240,7 @@ public class PantryDashboard extends JFrame {
             model.setValueAt(qty, selectedRow, 3);
 
             updateItemsFile();
+            updateReport();
 
         } catch (Exception ignored) {}
     }
@@ -245,6 +274,7 @@ public class PantryDashboard extends JFrame {
             model.setValueAt(row[3], selectedRow, 3);
 
             updateItemsFile();
+            updateReport();
 
         } catch (Exception ignored) {}
     }
@@ -263,11 +293,12 @@ public class PantryDashboard extends JFrame {
             for (Object[] row : allItems) {
                 String expiry = (row[6] == null || row[6].toString().isEmpty()) ? "-" : row[6].toString();
 
-                writer.write(currentUserId + " " + row[0] + " " + row[1] + " " + row[2] + " " +
-                        row[3] + " " + row[4]
-                        + " " + row[5] + " " + expiry);
+                writer.write(currentUserId + " | " + row[0] + " | " + row[1] + " | " + row[2] + " | " +
+                        row[3] + " | " + row[4]
+                        + " | " + row[5] + " | " + expiry);
                 writer.newLine();
             }
+            updateReport();
 
         } catch (IOException e) {
             System.err.println("Failed to save items: " + e.getMessage());
@@ -286,7 +317,7 @@ public class PantryDashboard extends JFrame {
                         continue;
                     }
 
-                    String[] parts = line.split(" ");
+                    String[] parts = line.split(" \\| ");
                     if (parts.length < 8) {
                         continue; // skip malformed
                     }
@@ -309,7 +340,7 @@ public class PantryDashboard extends JFrame {
                     continue;
                 }
 
-                String[] p = line.split(" ");
+                String[] p = line.split(" \\| ");
                 if (p.length < 7) {
                     continue; // malformed
                 }
@@ -335,25 +366,32 @@ public class PantryDashboard extends JFrame {
 
                 allItems.add(row);
                 model.addRow(row);
+                updateReport();
+                currentView = new ArrayList<>(allItems);
             }
         } catch (IOException ignored) {
         }
     }
 
     private void filterTable() {
-        setTableData(ItemFilters.filterBySearch(allItems, searchField.getText()));
+        String query = searchField.getText();
+        setTableData(ItemFilters.filterBySearch(allItems, query));
+        headerLabel.setText("Search Results: \"" + query + "\"");
     }
 
     private void showAll() {
         setTableData(new ArrayList<>(allItems));
+        headerLabel.setText("All Items");
     }
 
     private void filterLowStock() {
         setTableData(ItemFilters.filterLowStock(allItems));
+        headerLabel.setText("Low Stock Items");
     }
 
     private void filterExpiring() {
         setTableData(ItemFilters.filterExpiring(allItems, 15));
+        headerLabel.setText("Expiring Soon (<15 Days)");
     }
 
     private void openShoppingList() {
@@ -384,4 +422,81 @@ public class PantryDashboard extends JFrame {
         }
         return null;
     }
+
+    private void updateReport() {
+        int total = allItems.size();
+
+        int lowStock = 0;
+        int expiring = 0;
+
+        for (Object[] row : allItems) {
+            int qty = (int) row[3];
+            int threshold = (int) row[5];
+
+            if (qty <= threshold)
+                lowStock++;
+
+            String exp = row[6].toString();
+            if (!exp.equals("-") && !exp.isEmpty()) {
+                try {
+                    java.time.LocalDate expDate = java.time.LocalDate.parse(exp);
+                    long days = java.time.temporal.ChronoUnit.DAYS
+                            .between(java.time.LocalDate.now(), expDate);
+                    if (days >= 0 && days <= 15)
+                        expiring++;
+                } catch (Exception ignored) {}
+            }
+        }
+
+        reportLabel.setText("Items: " + total + "   |   Low Stock: " + lowStock + "   |   Expiring Soon: " + expiring);
+    }
+
+    private class ExpiryRowRenderer extends DefaultTableCellRenderer {
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value,
+                                                       boolean isSelected, boolean hasFocus, int row, int col) {
+
+            Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, col);
+
+            // Get full row actual index in table model
+            int modelRow = table.convertRowIndexToModel(row);
+
+            // Read expiry date
+            String expiry = model.getValueAt(modelRow, 6).toString();
+
+            // Default background
+            if (!isSelected) {
+                component.setBackground(Color.WHITE);
+            }
+
+            try {
+                int qty = Integer.parseInt(model.getValueAt(modelRow, 3).toString());
+                int threshold = Integer.parseInt(model.getValueAt(modelRow, 5).toString());
+
+                if (qty <= threshold) {
+                    if (!isSelected)
+                        component.setBackground(new Color(255, 220, 180)); // light red/pink
+                }
+            } catch (Exception ignored) {}
+
+            // Highlight expiring soon
+            if (!expiry.equals("-") && !expiry.isEmpty()) {
+                try {
+                    java.time.LocalDate expDate = java.time.LocalDate.parse(expiry);
+                    long days = java.time.temporal.ChronoUnit.DAYS
+                            .between(java.time.LocalDate.now(), expDate);
+
+                    if (days >= 0 && days <= 15) {
+                        if (!isSelected)
+                            component.setBackground(new Color(255, 180, 180)); // light orange
+                    }
+
+                } catch (Exception ignored) {}
+            }
+
+            return component;
+        }
+    }
+
+
 }

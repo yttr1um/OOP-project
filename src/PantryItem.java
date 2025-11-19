@@ -88,7 +88,8 @@ public class PantryItem implements Identifiable {
 
     @Override
     public String toString() {
-        return id + " " + name + " " + category + " " + quantity + " " + unit + " " + threshold + " " + expiryDate + "\n";
+        return id + " | " + name + " | " + category + " | " + quantity + " | " + unit + " | "
+                + threshold + " | " + expiryDate + "\n";
     }
 
 }
