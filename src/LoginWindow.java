@@ -5,9 +5,11 @@ import java.io.*;
 import java.util.Scanner;
 
 public class LoginWindow extends JFrame {
-    JTextField nameInput;
-    JPasswordField passwordInput;
-    JButton loginBtn, registerBtn;
+
+    private final JTextField nameInput;
+    private final JPasswordField passwordInput;
+    private final JButton loginBtn;
+    private final JButton registerBtn;
 
     public LoginWindow() {
         setTitle("Login");
@@ -18,68 +20,50 @@ public class LoginWindow extends JFrame {
         setLayout(new GridLayout(3, 2, 0, 5));
 
         nameInput = new JTextField();
-        add(new JLabel("Name: "));
-        add(nameInput);
+        add(new JLabel("Name:")); add(nameInput);
 
         passwordInput = new JPasswordField();
-        add(new JLabel("Password"));
-        add(passwordInput);
+        add(new JLabel("Password:")); add(passwordInput);
 
+        // Enable login button only when fields are non-empty
         DocumentListener fieldListener = new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                updateButtonState();
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                updateButtonState();
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                updateButtonState();
-            }
+            @Override public void insertUpdate(DocumentEvent e) { updateButtonState(); }
+            @Override public void removeUpdate(DocumentEvent e) { updateButtonState(); }
+            @Override public void changedUpdate(DocumentEvent e) { updateButtonState(); }
         };
-
         nameInput.getDocument().addDocumentListener(fieldListener);
         passwordInput.getDocument().addDocumentListener(fieldListener);
 
-        loginBtn = new JButton("login");
-        loginBtn.setEnabled(false);
-        registerBtn = new JButton("register");
+        loginBtn = new JButton("Login");
+        loginBtn.setEnabled(false); // Disabled until fields filled
+        registerBtn = new JButton("Register");
 
-        add(loginBtn);
-        add(registerBtn);
+        add(loginBtn); add(registerBtn);
 
         loginBtn.addActionListener(e -> {
             String name = nameInput.getText();
-            String password = new String((passwordInput.getPassword()));
-            checkUser(name, password);
+            String password = new String(passwordInput.getPassword());
+            checkUser(name, password); // Verify login credentials
         });
 
         registerBtn.addActionListener(e -> {
             dispose();
-            new RegisterDialog(); // open the registration window
+            new RegisterDialog(); // Open registration window
         });
 
         setVisible(true);
     }
 
+    // Check username/password against users.txt
     private void checkUser(String name, String password) {
         try (Scanner reader = new Scanner(new FileReader("users.txt"))) {
 
             while (reader.hasNextLine()) {
                 String line = reader.nextLine().trim();
-                if (line.isEmpty())
-                    continue;
+                if (line.isEmpty()) continue;
 
                 String[] userInfo = line.split("\\|");
-
-                // must have exactly 5 fields
-                if (userInfo.length < 5) {
-                    continue;
-                }
+                if (userInfo.length < 5) continue; // Skip invalid lines
 
                 String userId = userInfo[0].trim();
                 String userName = userInfo[1].trim();
@@ -87,25 +71,25 @@ public class LoginWindow extends JFrame {
 
                 if (userName.equals(name) && userPassword.equals(password)) {
                     dispose();
-                    new PantryDashboard(name, userId);
+                    new PantryDashboard(name, userId); // Open dashboard
                     return;
                 }
             }
 
-            // login failed
-            JOptionPane.showMessageDialog(this, "Invalid username or password.");
+            JOptionPane.showMessageDialog(this, "Invalid username or password."); // Login failed
 
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error reading users.txt");
+            JOptionPane.showMessageDialog(this, "Error reading users.txt"); // File error
         }
     }
 
+    // Enable login button if both fields are non-empty
     private void updateButtonState() {
         boolean enabled = !nameInput.getText().trim().isEmpty() && passwordInput.getPassword().length > 0;
         loginBtn.setEnabled(enabled);
     }
 
     public static void main(String[] args) {
-        new LoginWindow();
+        new LoginWindow(); // Launch login window
     }
 }
