@@ -10,9 +10,7 @@ public class ShoppingListWindow extends JDialog {
 
     private DefaultTableModel model;
     private JTable table;
-    private JButton addBtn, removeBtn, purchaseBtn;
     private String userId;
-
     private ArrayList<Object[]> entries = new ArrayList<>();
     private PantryDashboard dashboard;
 
@@ -48,9 +46,9 @@ public class ShoppingListWindow extends JDialog {
         // Bottom panel buttons
         JPanel bottom = new JPanel(new FlowLayout());
 
-        addBtn = new JButton("Add");
-        removeBtn = new JButton("Remove");
-        purchaseBtn = new JButton("Mark Purchased");
+        JButton addBtn = new JButton("Add");
+        JButton removeBtn = new JButton("Remove");
+        JButton purchaseBtn = new JButton("Mark Purchased");
 
         bottom.add(addBtn);
         bottom.add(removeBtn);

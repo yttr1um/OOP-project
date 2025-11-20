@@ -100,8 +100,13 @@ public class PantryDashboard extends JFrame {
         setVisible(true);
     }
 
-    public DefaultTableModel getModel() { return tableModel; }
-    public ArrayList<Object[]> getAllItems() { return allItems; }
+    public DefaultTableModel getModel() {
+        return tableModel;
+    }
+
+    public ArrayList<Object[]> getAllItems() {
+        return allItems;
+    }
 
     /**
      * Save all changes to the items file.
