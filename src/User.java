@@ -1,7 +1,7 @@
 import java.util.UUID;
 import java.io.*;
 
-public class User implements Identifiable{
+public class User implements Identifiable {
     private String name;
     private String email;
     private String phone;
@@ -22,8 +22,8 @@ public class User implements Identifiable{
 
             outFile.close();
 
-
-        } catch (IOException _) { }
+        } catch (IOException _) {
+        }
     }
 
     public String getName() {

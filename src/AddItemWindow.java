@@ -29,18 +29,35 @@ public class AddItemWindow extends JDialog {
         thresholdInput = new JTextField();
         expiryDateInput = new JTextField();
 
-        add(new JLabel("Name:")); add(nameInput);
-        add(new JLabel("Category:")); add(categoryInput);
-        add(new JLabel("Quantity:")); add(quantityInput);
-        add(new JLabel("Unit:")); add(unitInput);
-        add(new JLabel("Threshold:")); add(thresholdInput);
-        add(new JLabel("Expiry Date (YYYY-MM-DD):")); add(expiryDateInput);
+        add(new JLabel("Name:"));
+        add(nameInput);
+        add(new JLabel("Category:"));
+        add(categoryInput);
+        add(new JLabel("Quantity:"));
+        add(quantityInput);
+        add(new JLabel("Unit:"));
+        add(unitInput);
+        add(new JLabel("Threshold:"));
+        add(thresholdInput);
+        add(new JLabel("Expiry Date (YYYY-MM-DD):"));
+        add(expiryDateInput);
 
         // Enable Add button only when required fields are filled
         DocumentListener fieldListener = new DocumentListener() {
-            @Override public void insertUpdate(DocumentEvent e) { updateButtonState(); }
-            @Override public void removeUpdate(DocumentEvent e) { updateButtonState(); }
-            @Override public void changedUpdate(DocumentEvent e) { updateButtonState(); }
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updateButtonState();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updateButtonState();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                updateButtonState();
+            }
         };
 
         nameInput.getDocument().addDocumentListener(fieldListener);
@@ -49,7 +66,8 @@ public class AddItemWindow extends JDialog {
         unitInput.getDocument().addDocumentListener(fieldListener);
         thresholdInput.getDocument().addDocumentListener(fieldListener);
 
-        add(new JLabel("")); add(new JLabel(""));
+        add(new JLabel(""));
+        add(new JLabel(""));
 
         addItemBtn = new JButton("Add Item");
         addItemBtn.setFocusable(false);
@@ -63,16 +81,14 @@ public class AddItemWindow extends JDialog {
             }
 
             PantryItem item = createItem();
-            createdRow = new Object[]{
-                    item.getId(), item.getName(), item.getCategory(),
-                    item.getQuantity(), item.getUnit(),
-                    item.getThreshold(), item.getExpiryDate()
-            };
+            createdRow = new Object[] { item.getId(), item.getName(), item.getCategory(), item.getQuantity(),
+                    item.getUnit(), item.getThreshold(), item.getExpiryDate() };
 
             dispose(); // Close dialog only if valid
         });
 
-        add(new JLabel("")); add(addItemBtn);
+        add(new JLabel(""));
+        add(addItemBtn);
     }
 
     // Create PantryItem object from input fields
@@ -94,12 +110,9 @@ public class AddItemWindow extends JDialog {
 
     // Enable Add button only if all required fields are non-empty
     private void updateButtonState() {
-        boolean enabled =
-                !nameInput.getText().trim().isEmpty() &&
-                        !categoryInput.getText().trim().isEmpty() &&
-                        !quantityInput.getText().trim().isEmpty() &&
-                        !unitInput.getText().trim().isEmpty() &&
-                        !thresholdInput.getText().trim().isEmpty();
+        boolean enabled = !nameInput.getText().trim().isEmpty() && !categoryInput.getText().trim().isEmpty()
+                && !quantityInput.getText().trim().isEmpty() && !unitInput.getText().trim().isEmpty()
+                && !thresholdInput.getText().trim().isEmpty();
         addItemBtn.setEnabled(enabled);
     }
 
@@ -107,7 +120,8 @@ public class AddItemWindow extends JDialog {
         // Check quantity integer
         try {
             int q = Integer.parseInt(quantityInput.getText());
-            if (q < 0) return "Quantity must be a positive number.";
+            if (q < 0)
+                return "Quantity must be a positive number.";
         } catch (NumberFormatException e) {
             return "Quantity must be a whole number.";
         }
@@ -115,7 +129,8 @@ public class AddItemWindow extends JDialog {
         // Check threshold integer
         try {
             int t = Integer.parseInt(thresholdInput.getText());
-            if (t < 0) return "Threshold must be a positive number.";
+            if (t < 0)
+                return "Threshold must be a positive number.";
         } catch (NumberFormatException e) {
             return "Threshold must be a whole number.";
         }

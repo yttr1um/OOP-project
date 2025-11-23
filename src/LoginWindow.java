@@ -20,16 +20,29 @@ public class LoginWindow extends JFrame {
         setLayout(new GridLayout(3, 2, 0, 5));
 
         nameInput = new JTextField();
-        add(new JLabel("Name:")); add(nameInput);
+        add(new JLabel("Name:"));
+        add(nameInput);
 
         passwordInput = new JPasswordField();
-        add(new JLabel("Password:")); add(passwordInput);
+        add(new JLabel("Password:"));
+        add(passwordInput);
 
         // Enable login button only when fields are non-empty
         DocumentListener fieldListener = new DocumentListener() {
-            @Override public void insertUpdate(DocumentEvent e) { updateButtonState(); }
-            @Override public void removeUpdate(DocumentEvent e) { updateButtonState(); }
-            @Override public void changedUpdate(DocumentEvent e) { updateButtonState(); }
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updateButtonState();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updateButtonState();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                updateButtonState();
+            }
         };
         nameInput.getDocument().addDocumentListener(fieldListener);
         passwordInput.getDocument().addDocumentListener(fieldListener);
@@ -38,7 +51,8 @@ public class LoginWindow extends JFrame {
         loginBtn.setEnabled(false); // Disabled until fields filled
         registerBtn = new JButton("Register");
 
-        add(loginBtn); add(registerBtn);
+        add(loginBtn);
+        add(registerBtn);
 
         loginBtn.addActionListener(e -> {
             String name = nameInput.getText();
@@ -60,10 +74,12 @@ public class LoginWindow extends JFrame {
 
             while (reader.hasNextLine()) {
                 String line = reader.nextLine().trim();
-                if (line.isEmpty()) continue;
+                if (line.isEmpty())
+                    continue;
 
                 String[] userInfo = line.split("\\|");
-                if (userInfo.length < 5) continue; // Skip invalid lines
+                if (userInfo.length < 5)
+                    continue; // Skip invalid lines
 
                 String userId = userInfo[0].trim();
                 String userName = userInfo[1].trim();

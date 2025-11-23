@@ -52,9 +52,17 @@ public class EditItemWindow extends JDialog {
         // Document Listener Setup for enabling/disabling Save button
         // ----------------------
         DocumentListener listener = new DocumentListener() {
-            public void insertUpdate(DocumentEvent e) { checkFields(); }
-            public void removeUpdate(DocumentEvent e) { checkFields(); }
-            public void changedUpdate(DocumentEvent e) { checkFields(); }
+            public void insertUpdate(DocumentEvent e) {
+                checkFields();
+            }
+
+            public void removeUpdate(DocumentEvent e) {
+                checkFields();
+            }
+
+            public void changedUpdate(DocumentEvent e) {
+                checkFields();
+            }
         };
 
         nameInput.getDocument().addDocumentListener(listener);
@@ -71,14 +79,9 @@ public class EditItemWindow extends JDialog {
         saveBtn.setEnabled(true); // Initially enabled
 
         saveBtn.addActionListener(e -> {
-            editedRow = new Object[] {
-                    nameInput.getText(),
-                    categoryInput.getText(),
-                    Integer.parseInt(quantityInput.getText()),
-                    unitInput.getText(),
-                    Integer.parseInt(thresholdInput.getText()),
-                    expiryDateInput.getText()
-            };
+            editedRow = new Object[] { nameInput.getText(), categoryInput.getText(),
+                    Integer.parseInt(quantityInput.getText()), unitInput.getText(),
+                    Integer.parseInt(thresholdInput.getText()), expiryDateInput.getText() };
             dispose(); // Close dialog
         });
 
@@ -88,11 +91,9 @@ public class EditItemWindow extends JDialog {
 
     // Enable save button only if required fields are filled
     private void checkFields() {
-        boolean ok = !nameInput.getText().trim().isEmpty() &&
-                !categoryInput.getText().trim().isEmpty() &&
-                !quantityInput.getText().trim().isEmpty() &&
-                !unitInput.getText().trim().isEmpty() &&
-                !thresholdInput.getText().trim().isEmpty();
+        boolean ok = !nameInput.getText().trim().isEmpty() && !categoryInput.getText().trim().isEmpty()
+                && !quantityInput.getText().trim().isEmpty() && !unitInput.getText().trim().isEmpty()
+                && !thresholdInput.getText().trim().isEmpty();
 
         // Expiry date allowed to be empty
         saveBtn.setEnabled(ok);

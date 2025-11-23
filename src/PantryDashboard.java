@@ -22,7 +22,8 @@ public class PantryDashboard extends JFrame {
     private final ItemManager itemManager;
     private final PantryController controller;
 
-    private static final String[] COLUMN_NAMES = { "ID", "Name", "Category", "Quantity", "Unit", "Threshold", "Expiry Date" };
+    private static final String[] COLUMN_NAMES = { "ID", "Name", "Category", "Quantity", "Unit", "Threshold",
+            "Expiry Date" };
 
     public PantryDashboard(String userName, String userId) {
         this.currentUserId = userId;
@@ -178,14 +179,9 @@ public class PantryDashboard extends JFrame {
     }
 
     private Object[] showEditWindow(Object[] original) {
-        EditItemWindow window = new EditItemWindow(
-                original[1].toString(),
-                original[2].toString(),
-                Integer.parseInt(original[3].toString()),
-                original[4].toString(),
-                Integer.parseInt(original[5].toString()),
-                original[6].toString()
-        );
+        EditItemWindow window = new EditItemWindow(original[1].toString(), original[2].toString(),
+                Integer.parseInt(original[3].toString()), original[4].toString(),
+                Integer.parseInt(original[5].toString()), original[6].toString());
 
         window.setVisible(true);
         return window.getEditedRow();
@@ -200,7 +196,8 @@ public class PantryDashboard extends JFrame {
 
         String id = tableModel.getValueAt(selectedRow, 0).toString();
         Object[] original = findItemById(id);
-        if (original == null) return;
+        if (original == null)
+            return;
 
         Object[] updated = showEditWindow(original);
         if (updated != null) {
@@ -226,7 +223,8 @@ public class PantryDashboard extends JFrame {
         String id = tableModel.getValueAt(selectedRow, 0).toString();
 
         String input = JOptionPane.showInputDialog(this, "Consume amount:");
-        if (input == null) return; // user pressed cancel
+        if (input == null)
+            return; // user pressed cancel
 
         int amount;
 
@@ -244,7 +242,8 @@ public class PantryDashboard extends JFrame {
 
         int currentQty = (int) tableModel.getValueAt(selectedRow, 3);
         if (amount > currentQty) {
-            JOptionPane.showMessageDialog(this, "You cannot consume more than the available quantity (" + currentQty + ").");
+            JOptionPane.showMessageDialog(this,
+                    "You cannot consume more than the available quantity (" + currentQty + ").");
             return;
         }
 
@@ -252,7 +251,6 @@ public class PantryDashboard extends JFrame {
         tableModel.setValueAt(newQty, selectedRow, 3);
         updateReport();
     }
-
 
     private void restockItem() {
         int selectedRow = table.getSelectedRow();
@@ -264,7 +262,8 @@ public class PantryDashboard extends JFrame {
         String id = tableModel.getValueAt(selectedRow, 0).toString();
 
         String input = JOptionPane.showInputDialog(this, "Restock amount:");
-        if (input == null) return; // cancel
+        if (input == null)
+            return; // cancel
 
         int amount;
 
@@ -285,7 +284,6 @@ public class PantryDashboard extends JFrame {
         updateReport();
     }
 
-
     // Data Loading and Filtering
 
     private void loadItems() {
@@ -297,11 +295,11 @@ public class PantryDashboard extends JFrame {
         currentView = new ArrayList<>(allItems);
 
         tableModel.setRowCount(0);
-        for (Object[] row : allItems) tableModel.addRow(row);
+        for (Object[] row : allItems)
+            tableModel.addRow(row);
 
         updateReport();
     }
-
 
     private void filterTable() {
         String query = searchField.getText();
@@ -330,7 +328,8 @@ public class PantryDashboard extends JFrame {
         for (Object[] item : allItems) {
             int quantity = (int) item[3];
             int threshold = (int) item[5];
-            if (quantity <= threshold) lowStockItems.add(item);
+            if (quantity <= threshold)
+                lowStockItems.add(item);
         }
         new ShoppingListWindow(lowStockItems, currentUserId, this);
     }
@@ -338,19 +337,23 @@ public class PantryDashboard extends JFrame {
     private void setTableData(ArrayList<Object[]> list) {
         currentView = list;
         tableModel.setRowCount(0);
-        for (Object[] row : list) tableModel.addRow(row);
+        for (Object[] row : list) {
+            tableModel.addRow(row);
+        }
     }
 
     private Object[] findItemById(String id) {
         for (Object[] item : allItems) {
-            if (item[0].toString().equals(id)) return item;
+            if (item[0].toString().equals(id)) {
+                return item;
+            }
         }
         return null;
     }
 
     /**
-     * Updates the summary report at the bottom of the dashboard.
-     * Counts total items, low stock items, and items expiring within 15 days.
+     * Updates the summary report at the bottom of the dashboard. Counts total
+     * items, low stock items, and items expiring within 15 days.
      */
     private void updateReport() {
         int total = allItems.size();
@@ -360,14 +363,17 @@ public class PantryDashboard extends JFrame {
         for (Object[] item : allItems) {
             int quantity = (int) item[3];
             int threshold = (int) item[5];
-            if (quantity <= threshold) lowStock++;
+            if (quantity <= threshold)
+                lowStock++;
 
             String expiry = item[6].toString();
             if (!expiry.equals("-")) {
                 try {
                     long daysLeft = ChronoUnit.DAYS.between(LocalDate.now(), LocalDate.parse(expiry));
-                    if (daysLeft >= 0 && daysLeft <= 15) expiringSoon++;
-                } catch (Exception ignored) {}
+                    if (daysLeft >= 0 && daysLeft <= 15)
+                        expiringSoon++;
+                } catch (Exception ignored) {
+                }
             }
         }
 

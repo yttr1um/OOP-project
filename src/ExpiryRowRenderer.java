@@ -12,8 +12,8 @@ class ExpiryRowRenderer extends DefaultTableCellRenderer {
     }
 
     @Override
-    public Component getTableCellRendererComponent(JTable table, Object value,
-                                                   boolean isSelected, boolean hasFocus, int row, int col) {
+    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
+                                                   int row, int col) {
 
         Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, col);
 
@@ -36,21 +36,22 @@ class ExpiryRowRenderer extends DefaultTableCellRenderer {
                 if (!isSelected)
                     component.setBackground(new Color(255, 220, 180)); // light red/pink
             }
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
 
         // Highlight expiring soon
         if (!expiry.equals("-") && !expiry.isEmpty()) {
             try {
                 java.time.LocalDate expDate = java.time.LocalDate.parse(expiry);
-                long days = java.time.temporal.ChronoUnit.DAYS
-                        .between(java.time.LocalDate.now(), expDate);
+                long days = java.time.temporal.ChronoUnit.DAYS.between(java.time.LocalDate.now(), expDate);
 
                 if (days >= 0 && days <= 15) {
                     if (!isSelected)
                         component.setBackground(new Color(255, 180, 180)); // light orange
                 }
 
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
 
         return component;

@@ -118,7 +118,6 @@ public class RegisterDialog extends JFrame {
         new LoginWindow();
     }
 
-
     private void updateButtonState() {
         String name = nameInput.getText().trim();
         String email = emailInput.getText().trim();
@@ -130,4 +129,3 @@ public class RegisterDialog extends JFrame {
         registerBtn.setEnabled(enabled);
     }
 }
-

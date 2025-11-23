@@ -17,7 +17,8 @@ public class ItemManager {
         try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
             String line;
             while ((line = br.readLine()) != null) {
-                if (line.trim().isEmpty()) continue;
+                if (line.trim().isEmpty())
+                    continue;
                 String[] parts = line.split("\\|");
                 if (parts[0].trim().equals(userId)) {
                     Object[] row = new Object[7];
@@ -42,7 +43,8 @@ public class ItemManager {
         try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
             String line;
             while ((line = br.readLine()) != null) {
-                if (line.trim().isEmpty()) continue;
+                if (line.trim().isEmpty())
+                    continue;
                 String[] parts = line.split("\\|");
                 // Keep items of other users
                 if (!parts[0].trim().equals(userId)) {

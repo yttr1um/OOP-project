@@ -1,8 +1,7 @@
-3f3ac712-03c0-4451-aa6f-1606be0bbebe Cereal 1 Box Pending 2025-11-23
-3f3ac712-03c0-4451-aa6f-1606be0bbebe Milk 1 liters Pending 2025-11-23
-3f3ac712-03c0-4451-aa6f-1606be0bbebe Tomatoes 2 kg Pending 2025-11-23
-3f3ac712-03c0-4451-aa6f-1606be0bbebe Carrots 1 kg Pending 2025-11-23
-3f3ac712-03c0-4451-aa6f-1606be0bbebe Bananas 4 pcs Pending 2025-11-23
-3f3ac712-03c0-4451-aa6f-1606be0bbebe Spinach 2 bunches Pending 2025-11-23
-3f3ac712-03c0-4451-aa6f-1606be0bbebe Orange Juice 1 liters Pending 2025-11-23
-3f3ac712-03c0-4451-aa6f-1606be0bbebe Peppers 3 pcs Pending 2025-11-23
+74137a2b-a935-4563-8c91-c9220916a31f 3f3ac712-03c0-4451-aa6f-1606be0bbebe Oatmeal 2 kg Pending 2025-11-23
+74137a2b-a935-4563-8c91-c9220916a31f 3f3ac712-03c0-4451-aa6f-1606be0bbebe Lentils 1 kg Pending 2025-11-23
+74137a2b-a935-4563-8c91-c9220916a31f 3f3ac712-03c0-4451-aa6f-1606be0bbebe Salmon 0 kg Pending 2025-11-23
+74137a2b-a935-4563-8c91-c9220916a31f 3f3ac712-03c0-4451-aa6f-1606be0bbebe Tomato Paste 1 jar Pending 2025-11-23
+74137a2b-a935-4563-8c91-c9220916a31f 3f3ac712-03c0-4451-aa6f-1606be0bbebe Feta Cheese 0 kg Pending 2025-11-23
+74137a2b-a935-4563-8c91-c9220916a31f 3f3ac712-03c0-4451-aa6f-1606be0bbebe Blueberries 3 pcs Pending 2025-11-23
+74137a2b-a935-4563-8c91-c9220916a31f 3f3ac712-03c0-4451-aa6f-1606be0bbebe Cinnamon 1 pcs Pending 2025-11-23

@@ -5,6 +5,7 @@ import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class ShoppingListWindow extends JDialog {
 
@@ -13,12 +14,14 @@ public class ShoppingListWindow extends JDialog {
     private String userId;
     private ArrayList<Object[]> entries = new ArrayList<>();
     private PantryDashboard dashboard;
+    private String listId;
 
     String[] cols = { "Item", "Quantity", "Unit", "Status" };
 
     public ShoppingListWindow(ArrayList<Object[]> lowStock, String userId, PantryDashboard dash) {
 
         this.userId = userId;
+        this.listId = UUID.randomUUID().toString();
         this.dashboard = dash;
 
         setModal(true);
@@ -67,81 +70,82 @@ public class ShoppingListWindow extends JDialog {
     private void loadFromFile() {
         File file = new File("shopping_lists.txt");
 
-        if (!file.exists())
-            return;
+        if (!file.exists()) return;
 
         try (Scanner scan = new Scanner(file)) {
             while (scan.hasNextLine()) {
                 String line = scan.nextLine().trim();
-                if (line.isEmpty()) {
+                if (line.isEmpty())
                     continue;
-                }
 
                 String[] p = line.split(" ");
-                if (p.length < 6) {
-                    continue;
-                }
 
-                String uid = p[0];
-                if (!uid.equals(userId)) {
+                // Expecting: listId userId item qty unit status date
+                if (p.length < 7)
                     continue;
-                }
 
-                // format: userId item qty unit status date
-                Object[] row = { p[1], // item
-                        Integer.parseInt(p[2]), p[3], // unit
-                        p[4] // status
+                String fileListId = p[0];
+                String fileUserId = p[1];
+
+                // only load this user's shopping list
+                if (!fileUserId.equals(userId))
+                    continue;
+
+                Object[] row = {
+                        p[2],                       // item
+                        Integer.parseInt(p[3]),     // qty
+                        p[4],                       // unit
+                        p[5]                        // status
                 };
 
                 entries.add(row);
                 model.addRow(row);
+
+                this.listId = fileListId;
             }
-        } catch (Exception ignored) {
-        }
+        } catch (Exception ignored) {}
     }
+
 
     private void saveToFile() {
         File file = new File("shopping_lists.txt");
+        ArrayList<String> updated = new ArrayList<>();
 
-        ArrayList<String> keep = getStrings(file);
-
-        // rewrite everything
-        try (PrintWriter pw = new PrintWriter(new FileWriter(file))) {
-
-            for (String line : keep)
-                pw.println(line);
-
-            for (Object[] row : entries) {
-                pw.println(userId + " " + row[0] + " " + row[1] + " " + row[2] + " " + row[3] + " " + LocalDate.now());
-            }
-        } catch (Exception ignored) {
-        }
-    }
-
-    private ArrayList<String> getStrings(File file) {
-        ArrayList<String> keep = new ArrayList<>();
-
-        // keep other users' lists
+        // Keep all other users' entries
         if (file.exists()) {
             try (Scanner scan = new Scanner(file)) {
                 while (scan.hasNextLine()) {
                     String line = scan.nextLine().trim();
-                    if (line.isEmpty())
-                        continue;
+                    if (line.isEmpty()) continue;
+
                     String[] p = line.split(" ");
-                    if (!p[0].equals(userId))
-                        keep.add(line);
+                    if (p.length < 7) continue;
+
+                    // Keep lines that are NOT this user's list
+                    if (!p[1].equals(userId)) {
+                        updated.add(line);
+                    }
                 }
-            } catch (Exception ignored) {
-            }
+            } catch (Exception ignored) {}
         }
-        return keep;
+
+        try (PrintWriter pw = new PrintWriter(new FileWriter(file))) {
+            // Rewrite others' entries
+            for (String line : updated) pw.println(line);
+
+            // Rewrite this user's list
+            for (Object[] row : entries) {
+                pw.println(
+                        listId + " " + userId + " " + row[0] + " " + row[1] + " " +
+                                row[2] + " " + row[3] + " " + LocalDate.now()
+                );
+            }
+        } catch (Exception ignored) {}
     }
 
     private void addIfNotExists(String item, int qty, String unit) {
         for (Object[] row : entries) {
-            if (row[0].equals(item))
-                return;
+            if (row[0].equals(item)) return; // existing entry
         }
 
         Object[] row = { item, qty, unit, "Pending" };
@@ -149,6 +153,7 @@ public class ShoppingListWindow extends JDialog {
         model.addRow(row);
         saveToFile();
     }
+
 
     private void addManual() {
         String item = JOptionPane.showInputDialog("Item name:");
@@ -208,8 +213,8 @@ public class ShoppingListWindow extends JDialog {
 
         // 2. Item doesn't exist → create new pantry item
         if (!found) {
-            String newId = "I" + System.currentTimeMillis(); // simple ID
-            Object[] newRow = { newId, itemName, "Misc", qty, unit, 1, "N/A" };
+            String newId = UUID.randomUUID().toString();
+            Object[] newRow = { userId, newId, itemName, "Misc", qty, unit, 1, "N/A" };
 
             dashboard.getAllItems().add(newRow);
             dashboard.getModel().addRow(newRow);
