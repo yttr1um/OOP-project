@@ -1,20 +1,40 @@
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | ef49b660-3c62-4859-9f66-7ea8bd33f319 | 1 | 1 | 1 | 1 | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 04ee2a00-910f-424a-933c-71d1d0de386e | 1 | 1 | 1 | 1 | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 727a83f2-bde0-41cb-9859-8dcd6b9eb602 | 1 | 1 | 1 | 1 | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | e273efc0-d41b-4e8d-aba4-905c73ff6a96 | 1 | 1 | 1 | 1 | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | d8fd403c-3cc6-4345-acfe-8681fd02eee5 | 1 | 1 | 1 | 1 | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | e4f06b0c-ce81-416b-a6f2-51634092caf7 | 1 | 1 | 1 | 1 | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 6d8bd64e-2f6d-4661-acf7-948cc48afa63 | 1 | 1 | 1 | 1 | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | be922ac1-4d40-41b7-b4a8-03086468264f | 1 | 1 | 1 | 1 | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 2f68acd6-fb33-4595-b47f-05561713d16d | 1 | 1 | 1 | 1 | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | f33ddd4d-8227-46e3-abe9-3ac2dc8218eb | 1 | 1 | 1 | 1 | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 19748e69-47a4-41d7-8ea4-94faab046365 | 1 | 1 | 1 | 1 | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | ad6199b5-ab9b-486d-9fb8-1290b545f7e3 | 1 | 1 | 1 | 1 | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 026a9220-3b8d-4e32-9b79-44b25379ca94 | 1 | 1 | 1 | 1 | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 73609400-3123-404e-bfe0-2ffa2c751056 | 1 | 1 | 1 | 1 | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 225d681b-c67d-4408-b7d1-3cf8554ef313 | 1 | 1 | 1 | 1 | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 77a3b62f-731a-44f4-b9f2-36131e20c798 | 1 | 1 | 1 | 1 | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 3f227083-ec53-42e4-9305-026571cf0b47 | 1 | 1 | 1 | 1 | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 7a4585e1-9f61-40fb-9869-827d3e30021f | 1 | 1 | 1 | 1 | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 2bbe981b-0ab7-4a22-b0bd-aef70d30725f | 1 | 1 | 1 | 1 | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 90bfebed-7a0d-418b-af8a-575cecf4f7d0 | 1 | 1 | 1 | 1 | 1 | -
+db9e9bd3-d63c-4a18-a687-ddd2189e1706 | df77fe3e-5559-4c6f-ba86-9c3c673edd08 | Milk | Dairy | 2 | L | 2 | 2025-11-28
+db9e9bd3-d63c-4a18-a687-ddd2189e1706 | 5d167f7b-4296-4dc0-8213-96e904f144f9 | Eggs | Dairy | 12 | pcs | 6 | 2025-12-15
+db9e9bd3-d63c-4a18-a687-ddd2189e1706 | a34fa82e-0171-4b2a-b076-8cc37d3d67f6 | Rice | Grains | 5 | kg | 2 | -
+db9e9bd3-d63c-4a18-a687-ddd2189e1706 | a152b312-d670-4c5f-8d19-8de6e24b93e9 | Pasta | Grains | 1 | kg | 3 | 2026-01-10
+db9e9bd3-d63c-4a18-a687-ddd2189e1706 | 6459f3cd-9909-45b1-a2ea-2bde04a5a4d2 | Chicken | Meat | 0 | kg | 2 | 2025-11-26
+db9e9bd3-d63c-4a18-a687-ddd2189e1706 | 8b5f2ebb-3769-4cd1-a99f-f851f92cf092 | Canned Beans | Canned | 8 | pcs | 3 | -
+db9e9bd3-d63c-4a18-a687-ddd2189e1706 | 21dc64e7-b6a1-48ef-91b4-be59b13b6ce7 | Tomato Sauce | Condiments | 1 | jar | 2 | 2025-12-05
+db9e9bd3-d63c-4a18-a687-ddd2189e1706 | 1bf8f2ee-d477-424a-b53a-b1c0531e7c4d | Cheese | Dairy | 0 | kg | 1 | 2025-11-29
+db9e9bd3-d63c-4a18-a687-ddd2189e1706 | b1d02ed8-b412-4b49-a784-1e26290a3d96 | Bread | Bakery | 3 | pcs | 2 | 2025-11-25
+db9e9bd3-d63c-4a18-a687-ddd2189e1706 | 8b103701-25e8-4c69-b34a-2acb0506579f | Flour | Baking | 4 | kg | 1 | -
+db9e9bd3-d63c-4a18-a687-ddd2189e1706 | af2f247d-13ab-4c16-adb1-ce3dae18905a | Sugar | Baking | 6 | kg | 2 | -
+db9e9bd3-d63c-4a18-a687-ddd2189e1706 | 1b5ac79e-a520-443d-8746-56b11c1f4259 | Butter | Dairy | 2 | kg | 1 | 2025-12-02
+db9e9bd3-d63c-4a18-a687-ddd2189e1706 | 6fe9b1f7-dfb0-480e-8b03-02de90b4ce5c | Yogurt | Dairy | 5 | pcs | 2 | 2025-12-01
+db9e9bd3-d63c-4a18-a687-ddd2189e1706 | e11f3463-55f1-49bd-8f63-0fca57404650 | Apples | Fruit | 10 | pcs | 4 | 2025-12-10
+db9e9bd3-d63c-4a18-a687-ddd2189e1706 | 5dc6e5c6-3478-4f6f-876c-348eff6533e3 | Oranges | Fruit | 3 | pcs | 3 | 2025-11-30
+db9e9bd3-d63c-4a18-a687-ddd2189e1706 | 22fc9c96-136c-4c35-a63d-d8accd219c97 | Olive Oil | Condiments | 2 | L | 1 | -
+db9e9bd3-d63c-4a18-a687-ddd2189e1706 | 464c987b-e53a-4c9d-8d77-e979641f33ae | Salt | Condiments | 5 | pcs | 1 | -
+db9e9bd3-d63c-4a18-a687-ddd2189e1706 | 93b56c85-5da9-436a-b867-8992a9717efb | Pepper | Condiments | 1 | pcs | 1 | -
+db9e9bd3-d63c-4a18-a687-ddd2189e1706 | b4277f72-879f-4369-baad-c5c0cf0b7b24 | Coffee | Beverages | 4 | pcs | 2 | -
+db9e9bd3-d63c-4a18-a687-ddd2189e1706 | 0a7db259-6ed7-4e48-8aae-968dedbb9fd9 | Tea | Beverages | 2 | pcs | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | ef49b660-3c62-4859-9f66-7ea8bd33f319 | Oatmeal | Grains | 2 | kg | 2 | 2025-11-28
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 04ee2a00-910f-424a-933c-71d1d0de386 | Almonds | Nuts | 12 | pcs | 6 | 2025-12-15
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 727a83f2-bde0-41cb-9859-8dcd6b9eb602 | Quinoa | Grains | 5 | kg | 2 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | e273efc0-d41b-4e8d-aba4-905c73ff6a96 | Lentils | Legumes | 1 | kg | 3 | 2026-01-10
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | d8fd403c-3cc6-4345-acfe-8681fd02eee5 | Salmon | Meat | 0 | kg | 2 | 2025-11-26
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | e4f06b0c-ce81-416b-a6f2-51634092caf7 | Chickpeas | Canned | 8 | pcs | 3 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 6d8bd64e-2f6d-4661-acf7-948cc48afa63 | Tomato Paste | Condiments | 1 | jar | 2 | 2025-12-05
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | be922ac1-4d40-41b7-b4a8-03086468264f | Feta Cheese | Dairy | 0 | kg | 1 | 2025-11-29
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 2f68acd6-fb33-4595-b47f-05561713d16d | Baguette | Bakery | 3 | pcs | 2 | 2025-11-25
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | f33ddd4d-8227-46e3-abe9-3ac2dc8218eb | Whole Wheat Flour | Baking | 4 | kg | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 19748e69-47a4-41d7-8ea4-94faab046365 | Honey | Condiments | 6 | kg | 2 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | ad6199b5-ab9b-486d-9fb8-1290b545f7e3 | Margarine | Dairy | 2 | kg | 1 | 2025-12-02
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 026a9220-3b8d-4e32-9b79-44b25379ca94 | Greek Yogurt | Dairy | 5 | pcs | 2 | 2025-12-01
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 73609400-3123-404e-bfe0-2ffa2c751056 | Bananas | Fruit | 10 | pcs | 4 | 2025-12-10
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 225d681b-c67d-4408-b7d1-3cf8554ef313 | Blueberries | Fruit | 3 | pcs | 3 | 2025-11-30
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 77a3b62f-731a-44f4-b9f2-36131e20c798 | Sunflower Oil | Condiments | 2 | L | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 3f227083-ec53-42e4-9305-026571cf0b47 | Soy Sauce | Condiments | 5 | pcs | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 7a4585e1-9f61-40fb-9869-827d3e30021f | Cinnamon | Spices | 1 | pcs | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 2bbe981b-0ab7-4a22-b0bd-aef70d30725f | Hot Chocolate | Beverages | 4 | pcs | 2 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 90bfebed-7a0d-418b-af8a-575cecf4f7d0 | Green Tea | Beverages | 2 | pcs | 1 | -

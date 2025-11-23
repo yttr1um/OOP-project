@@ -1,95 +1,85 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class ItemManager {
-
     private final String userId;
-    private final File file = new File("items.txt");
+    private static final String FILE_PATH = "items.txt";
 
     public ItemManager(String userId) {
         this.userId = userId;
     }
 
-    // Load items for this user only
+    /**
+     * Load items for the current user only.
+     */
     public ArrayList<Object[]> loadItems() {
-        ArrayList<Object[]> list = new ArrayList<>();
-
-        try (Scanner reader = new Scanner(file)) {
-            while (reader.hasNextLine()) {
-                String line = reader.nextLine().trim();
-                if (line.isEmpty()) continue;
-
-                String[] p = line.split(" \\| ");
-                if (p.length < 8) continue;
-
-                if (!p[0].equals(userId)) continue;
-
-                String expiry = p[7].equals("-") ? "" : p[7];
-
-                Object[] row = {
-                        p[1],                 // ID
-                        p[2],                 // Name
-                        p[3],                 // Category
-                        Integer.parseInt(p[4]), // Quantity
-                        p[5],                 // Unit
-                        Integer.parseInt(p[6]), // Threshold
-                        expiry
-                };
-
-                list.add(row);
+        ArrayList<Object[]> userItems = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.trim().isEmpty()) continue;
+                String[] parts = line.split("\\|");
+                if (parts[0].trim().equals(userId)) {
+                    Object[] row = new Object[7];
+                    for (int i = 1; i <= 7; i++) {
+                        row[i - 1] = parseValue(parts[i].trim());
+                    }
+                    userItems.add(row);
+                }
             }
-        } catch (IOException ignored) {}
-
-        return list;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return userItems;
     }
 
-
-    // Save all items for this user
-    public void saveItems(ArrayList<Object[]> items) {
-        ArrayList<String> otherUsersLines = readOtherUsers();
-
-        try (PrintWriter writer = new PrintWriter(new FileWriter(file))) {
-
-            // Rewrite other users
-            for (String line : otherUsersLines)
-                writer.println(line);
-
-            // Write current user’s items
-            for (Object[] row : items) {
-                String expiry = (row[6] == null || row[6].toString().isEmpty())
-                        ? "-" : row[6].toString();
-
-                writer.println(
-                        userId + " | " + row[0] + " | " + row[1] + " | " +
-                                row[2] + " | " + row[3] + " | " + row[4] + " | " +
-                                row[5] + " | " + expiry
-                );
+    /**
+     * Save items for the current user only. Other users remain intact.
+     */
+    public void saveItems(ArrayList<Object[]> currentUserItems) {
+        ArrayList<String> allLines = new ArrayList<>();
+        // Load all existing lines
+        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.trim().isEmpty()) continue;
+                String[] parts = line.split("\\|");
+                // Keep items of other users
+                if (!parts[0].trim().equals(userId)) {
+                    allLines.add(line);
+                }
             }
+        } catch (IOException ignored) {
+        }
 
-        } catch (IOException ignored) {}
+        // Add/update current user's items
+        for (Object[] row : currentUserItems) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(userId).append(" | ");
+            for (int i = 0; i < 7; i++) {
+                sb.append(row[i].toString()).append(" | ");
+            }
+            sb.setLength(sb.length() - 3); // remove last " | "
+            allLines.add(sb.toString());
+        }
+
+        // Write back all users' items
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH))) {
+            for (String l : allLines) {
+                bw.write(l);
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-
-    // Read all lines that belong to OTHER users
-    private ArrayList<String> readOtherUsers() {
-        ArrayList<String> list = new ArrayList<>();
-
-        if (!file.exists()) return list;
-
-        try (Scanner scan = new Scanner(file)) {
-            while (scan.hasNextLine()) {
-                String line = scan.nextLine().trim();
-                if (line.isEmpty()) continue;
-
-                String[] p = line.split(" \\| ");
-                if (p.length < 2) continue;
-
-                if (!p[0].equals(userId))
-                    list.add(line);
-            }
-        } catch (Exception ignored) {}
-
-        return list;
+    private Object parseValue(String s) {
+        // Try parsing numbers, else return string
+        try {
+            return Integer.parseInt(s);
+        } catch (NumberFormatException e) {
+            return s;
+        }
     }
 }
