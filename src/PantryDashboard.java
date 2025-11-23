@@ -224,15 +224,35 @@ public class PantryDashboard extends JFrame {
         }
 
         String id = tableModel.getValueAt(selectedRow, 0).toString();
+
+        String input = JOptionPane.showInputDialog(this, "Consume amount:");
+        if (input == null) return; // user pressed cancel
+
+        int amount;
+
         try {
-            int amount = Integer.parseInt(JOptionPane.showInputDialog("Consume amount:"));
-            Integer newQty = controller.consumeItem(id, amount);
-            if (newQty != null) {
-                tableModel.setValueAt(newQty, selectedRow, 3);
-                updateReport();
-            }
-        } catch (Exception ignored) {}
+            amount = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid number.");
+            return;
+        }
+
+        if (amount <= 0) {
+            JOptionPane.showMessageDialog(this, "Amount must be greater than 0.");
+            return;
+        }
+
+        int currentQty = (int) tableModel.getValueAt(selectedRow, 3);
+        if (amount > currentQty) {
+            JOptionPane.showMessageDialog(this, "You cannot consume more than the available quantity (" + currentQty + ").");
+            return;
+        }
+
+        Integer newQty = controller.consumeItem(id, amount);
+        tableModel.setValueAt(newQty, selectedRow, 3);
+        updateReport();
     }
+
 
     private void restockItem() {
         int selectedRow = table.getSelectedRow();
@@ -242,26 +262,46 @@ public class PantryDashboard extends JFrame {
         }
 
         String id = tableModel.getValueAt(selectedRow, 0).toString();
+
+        String input = JOptionPane.showInputDialog(this, "Restock amount:");
+        if (input == null) return; // cancel
+
+        int amount;
+
         try {
-            int amount = Integer.parseInt(JOptionPane.showInputDialog("Restock amount:"));
-            Integer newQty = controller.restockItem(id, amount);
-            if (newQty != null) {
-                tableModel.setValueAt(newQty, selectedRow, 3);
-                updateReport();
-            }
-        } catch (Exception ignored) {}
+            amount = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Please enter a valid number.");
+            return;
+        }
+
+        if (amount <= 0) {
+            JOptionPane.showMessageDialog(this, "Amount must be greater than 0.");
+            return;
+        }
+
+        Integer newQty = controller.restockItem(id, amount);
+        tableModel.setValueAt(newQty, selectedRow, 3);
+        updateReport();
     }
+
 
     // Data Loading and Filtering
 
     private void loadItems() {
-        allItems = itemManager.loadItems();
+        ArrayList<Object[]> loaded = itemManager.loadItems();
+
+        allItems.clear();
+        allItems.addAll(loaded);
+
         currentView = new ArrayList<>(allItems);
 
         tableModel.setRowCount(0);
         for (Object[] row : allItems) tableModel.addRow(row);
+
         updateReport();
     }
+
 
     private void filterTable() {
         String query = searchField.getText();

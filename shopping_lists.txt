@@ -1,8 +1,8 @@
-3f3ac712-03c0-4451-aa6f-1606be0bbebe 1 1 1 Pending 2025-11-20
-3f3ac712-03c0-4451-aa6f-1606be0bbebe Cereal 1 Box Pending 2025-11-20
-3f3ac712-03c0-4451-aa6f-1606be0bbebe Aluminum Foil 1 Roll Pending 2025-11-20
-3f3ac712-03c0-4451-aa6f-1606be0bbebe Vinegar 1 L Pending 2025-11-20
-3f3ac712-03c0-4451-aa6f-1606be0bbebe Brown Sugar 1 Kg Pending 2025-11-20
-3f3ac712-03c0-4451-aa6f-1606be0bbebe Popcorn Kernels 1 Bag Pending 2025-11-20
-3f3ac712-03c0-4451-aa6f-1606be0bbebe Vegetable Oil 2 L Pending 2025-11-20
-3f3ac712-03c0-4451-aa6f-1606be0bbebe Dish Soap 1 Bottle Pending 2025-11-20
+3f3ac712-03c0-4451-aa6f-1606be0bbebe Cereal 1 Box Pending 2025-11-23
+3f3ac712-03c0-4451-aa6f-1606be0bbebe Milk 1 liters Pending 2025-11-23
+3f3ac712-03c0-4451-aa6f-1606be0bbebe Tomatoes 2 kg Pending 2025-11-23
+3f3ac712-03c0-4451-aa6f-1606be0bbebe Carrots 1 kg Pending 2025-11-23
+3f3ac712-03c0-4451-aa6f-1606be0bbebe Bananas 4 pcs Pending 2025-11-23
+3f3ac712-03c0-4451-aa6f-1606be0bbebe Spinach 2 bunches Pending 2025-11-23
+3f3ac712-03c0-4451-aa6f-1606be0bbebe Orange Juice 1 liters Pending 2025-11-23
+3f3ac712-03c0-4451-aa6f-1606be0bbebe Peppers 3 pcs Pending 2025-11-23

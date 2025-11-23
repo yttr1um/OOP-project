@@ -1,20 +1,20 @@
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 58dd5989-cd37-4094-9d0c-4d77a8050f4b | Garlic Powder | Spice | 150 | G | 50 | 2026-06-15
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 8e7fbde7-697e-4b64-8ce9-c534f4d059a5 | Cereal | Breakfast | 1 | Box | 1 | 2025-11-25
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 57e86112-3a0a-471f-90f6-21c9a45d2e00 | Aluminum Foil | Misc | 1 | Roll | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 2feef875-7882-4e4d-9d8d-2309a9d4a633 | Salsa | Condiment | 450 | Ml | 100 | 2025-11-20
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 51f25f2c-57da-4db0-ba61-6b76224e5cb2 | Tea Towel | Misc | 4 | Pc | 2 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 7fec6374-c308-4df3-b0dc-f939ddbb6598 | Linguine Pasta | Grains | 500 | G | 100 | 2027-01-01
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 725ebd70-8206-4cda-b941-cdf5a4215850 | Maple Syrup | Condiment | 750 | Ml | 200 | 2027-04-10
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 81d369c7-6060-4ba0-b5ec-907a40cb0b3b | Canned Peaches | Canned | 2 | Can | 1 | 2028-09-01
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | da59d209-67bf-4556-90e6-24341f26bf22 | Vinegar | Condiment | 1 | L | 250 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 27730b5c-ef2b-4fc1-92bb-d99eb1f7e09e | Paper Towels | Cleaning | 6 | Roll | 2 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 7c10573f-e4fc-42e3-befa-a86aba6e0e80 | Brown Sugar | Baking | 1 | Kg | 250 | 2026-08-01
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 2f9fe1fa-49cf-4256-ba69-6a60b19a6e11 | Popcorn Kernels | Grains | 1 | Bag | 250 | 2027-05-01
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | ce065d18-4168-4803-b759-b665c6017c75 | Vegetable Oil | Oil | 2 | L | 500 | 2026-11-23
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | e3fa569f-ceb0-4016-a243-b30cac859de1 | Dry Yeast | Baking | 100 | G | 20 | 2025-11-28
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 3ae858fe-2f7d-4213-840e-b93c794ca2a3 | Ground Cinnamon | Spice | 80 | G | 20 | 2027-10-01
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 3d06480e-f510-441a-91c4-188c3940a457 | Dish Soap | Cleaning | 1 | Bottle | 1 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | a0a8b979-e053-4c91-b93e-ebc44dfcc9c1 | Canned Kidney Beans | Canned | 3 | Can | 1 | 2028-07-01
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | c8532e8b-7ac1-46ce-896e-4c7e82078d91 | Honey Mustard | Condiment | 350 | G | 100 | 2025-12-02
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 191bd66a-5991-4acd-9cd4-fe56cdc1821e | Black Tea Bags | Beverage | 50 | Pc | 10 | 2027-09-01
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | a347debb-5434-461c-93e8-083e70a4f5a5 | Tin Foil Containers | Misc | 10 | Pc | 5 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | ef49b660-3c62-4859-9f66-7ea8bd33f319 | 1 | 1 | 1 | 1 | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 04ee2a00-910f-424a-933c-71d1d0de386e | 1 | 1 | 1 | 1 | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 727a83f2-bde0-41cb-9859-8dcd6b9eb602 | 1 | 1 | 1 | 1 | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | e273efc0-d41b-4e8d-aba4-905c73ff6a96 | 1 | 1 | 1 | 1 | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | d8fd403c-3cc6-4345-acfe-8681fd02eee5 | 1 | 1 | 1 | 1 | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | e4f06b0c-ce81-416b-a6f2-51634092caf7 | 1 | 1 | 1 | 1 | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 6d8bd64e-2f6d-4661-acf7-948cc48afa63 | 1 | 1 | 1 | 1 | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | be922ac1-4d40-41b7-b4a8-03086468264f | 1 | 1 | 1 | 1 | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 2f68acd6-fb33-4595-b47f-05561713d16d | 1 | 1 | 1 | 1 | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | f33ddd4d-8227-46e3-abe9-3ac2dc8218eb | 1 | 1 | 1 | 1 | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 19748e69-47a4-41d7-8ea4-94faab046365 | 1 | 1 | 1 | 1 | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | ad6199b5-ab9b-486d-9fb8-1290b545f7e3 | 1 | 1 | 1 | 1 | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 026a9220-3b8d-4e32-9b79-44b25379ca94 | 1 | 1 | 1 | 1 | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 73609400-3123-404e-bfe0-2ffa2c751056 | 1 | 1 | 1 | 1 | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 225d681b-c67d-4408-b7d1-3cf8554ef313 | 1 | 1 | 1 | 1 | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 77a3b62f-731a-44f4-b9f2-36131e20c798 | 1 | 1 | 1 | 1 | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 3f227083-ec53-42e4-9305-026571cf0b47 | 1 | 1 | 1 | 1 | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 7a4585e1-9f61-40fb-9869-827d3e30021f | 1 | 1 | 1 | 1 | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 2bbe981b-0ab7-4a22-b0bd-aef70d30725f | 1 | 1 | 1 | 1 | 1 | -
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 90bfebed-7a0d-418b-af8a-575cecf4f7d0 | 1 | 1 | 1 | 1 | 1 | -

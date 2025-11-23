@@ -55,13 +55,21 @@ public class AddItemWindow extends JDialog {
         addItemBtn.setFocusable(false);
         addItemBtn.setEnabled(false);
         addItemBtn.addActionListener(e -> {
+            // Validate inputs first
+            String error = validateInputs();
+            if (error != null) {
+                JOptionPane.showMessageDialog(this, error, "Input Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             PantryItem item = createItem();
             createdRow = new Object[]{
                     item.getId(), item.getName(), item.getCategory(),
                     item.getQuantity(), item.getUnit(),
                     item.getThreshold(), item.getExpiryDate()
             };
-            dispose(); // Close dialog
+
+            dispose(); // Close dialog only if valid
         });
 
         add(new JLabel("")); add(addItemBtn);
@@ -94,4 +102,33 @@ public class AddItemWindow extends JDialog {
                         !thresholdInput.getText().trim().isEmpty();
         addItemBtn.setEnabled(enabled);
     }
+
+    private String validateInputs() {
+        // Check quantity integer
+        try {
+            int q = Integer.parseInt(quantityInput.getText());
+            if (q < 0) return "Quantity must be a positive number.";
+        } catch (NumberFormatException e) {
+            return "Quantity must be a whole number.";
+        }
+
+        // Check threshold integer
+        try {
+            int t = Integer.parseInt(thresholdInput.getText());
+            if (t < 0) return "Threshold must be a positive number.";
+        } catch (NumberFormatException e) {
+            return "Threshold must be a whole number.";
+        }
+
+        // Validate date format only if not empty
+        String date = expiryDateInput.getText().trim();
+        if (!date.isEmpty()) {
+            if (!date.matches("\\d{4}-\\d{2}-\\d{2}")) {
+                return "Expiry date must follow the format YYYY-MM-DD.";
+            }
+        }
+
+        return null; // All good
+    }
+
 }

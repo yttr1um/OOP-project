@@ -21,13 +21,6 @@ public class PantryItem implements Identifiable {
         this.unit = unit;
         this.threshold = threshold;
         this.expiryDate = expiryDate;
-
-        try {
-            // Save pantry item to items.txt (database)
-            FileWriter outFile = new FileWriter("items.txt", true);
-            outFile.write(String.valueOf(this));
-            outFile.close();
-        } catch (IOException _) { }
     }
 
     public String getUserId() {
@@ -88,7 +81,7 @@ public class PantryItem implements Identifiable {
 
     @Override
     public String toString() {
-        return id + " | " + name + " | " + category + " | " + quantity + " | " + unit + " | "
+        return userId + " | " + id + " | " + name + " | " + category + " | " + quantity + " | " + unit + " | "
                 + threshold + " | " + expiryDate + "\n";
     }
 

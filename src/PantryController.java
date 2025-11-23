@@ -11,10 +11,9 @@ public class PantryController {
     }
 
     // Add a new item and save to file
-    public Object[] addItem(Object[] newRow) {
+    public void addItem(Object[] newRow) {
         allItems.add(newRow);
         itemManager.saveItems(allItems);
-        return newRow;
     }
 
     // Delete an item by ID and save changes
