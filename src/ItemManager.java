@@ -28,9 +28,7 @@ public class ItemManager {
                     userItems.add(row);
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException _) {}
         return userItems;
     }
 
@@ -71,9 +69,7 @@ public class ItemManager {
                 bw.write(l);
                 bw.newLine();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException _) {}
     }
 
     private Object parseValue(String s) {
