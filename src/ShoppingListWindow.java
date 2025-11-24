@@ -212,7 +212,15 @@ public class ShoppingListWindow extends JDialog {
 
         if (!found) {
             String newId = UUID.randomUUID().toString();
-            Object[] newRow = { userId, newId, itemName, "Misc", qty, unit, 1, "N/A" };
+            Object[] newRow = {
+                    newId,          // ID
+                    itemName,       // Name
+                    "Misc",         // Category
+                    qty,            // Quantity
+                    unit,           // Unit
+                    1,              // Threshold
+                    "N/A"           // Expiry Date
+            };
 
             dashboard.getAllItems().add(newRow);
             dashboard.getModel().addRow(newRow);
