@@ -193,7 +193,6 @@ public class ShoppingListWindow extends JDialog {
         int qty = (int) entries.get(row)[1];
         String unit = entries.get(row)[2].toString();
 
-        // 1. Restock pantry automatically
         boolean found = false;
 
         for (Object[] pantryRow : dashboard.getAllItems()) {
@@ -211,7 +210,6 @@ public class ShoppingListWindow extends JDialog {
             }
         }
 
-        // 2. Item doesn't exist → create new pantry item
         if (!found) {
             String newId = UUID.randomUUID().toString();
             Object[] newRow = { userId, newId, itemName, "Misc", qty, unit, 1, "N/A" };
@@ -220,14 +218,10 @@ public class ShoppingListWindow extends JDialog {
             dashboard.getModel().addRow(newRow);
         }
 
-        // 3. Save pantry changes to file
         dashboard.updateItemsFile();
-
-        // 4. Remove item from shopping list
         entries.remove(row);
         model.removeRow(row);
 
-        // 5. Save shopping list file
         saveToFile();
 
         JOptionPane.showMessageDialog(this, "Item purchased and added to pantry!");

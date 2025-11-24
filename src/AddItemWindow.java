@@ -119,8 +119,8 @@ public class AddItemWindow extends JDialog {
     private String validateInputs() {
         // Check quantity integer
         try {
-            int q = Integer.parseInt(quantityInput.getText());
-            if (q < 0)
+            int quantity = Integer.parseInt(quantityInput.getText());
+            if (quantity < 0)
                 return "Quantity must be a positive number.";
         } catch (NumberFormatException e) {
             return "Quantity must be a whole number.";
@@ -128,8 +128,8 @@ public class AddItemWindow extends JDialog {
 
         // Check threshold integer
         try {
-            int t = Integer.parseInt(thresholdInput.getText());
-            if (t < 0)
+            int threshold = Integer.parseInt(thresholdInput.getText());
+            if (threshold < 0)
                 return "Threshold must be a positive number.";
         } catch (NumberFormatException e) {
             return "Threshold must be a whole number.";
