@@ -37,4 +37,4 @@ db9e9bd3-d63c-4a18-a687-ddd2189e1706 | 0a7db259-6ed7-4e48-8aae-968dedbb9fd9 | Te
 3f3ac712-03c0-4451-aa6f-1606be0bbebe | 3f227083-ec53-42e4-9305-026571cf0b47 | Soy Sauce | Condiments | 5 | pcs | 1 | -
 3f3ac712-03c0-4451-aa6f-1606be0bbebe | 7a4585e1-9f61-40fb-9869-827d3e30021f | Cinnamon | Spices | 1 | pcs | 1 | -
 3f3ac712-03c0-4451-aa6f-1606be0bbebe | 2bbe981b-0ab7-4a22-b0bd-aef70d30725f | Hot Chocolate | Beverages | 4 | pcs | 2 | -
-3f3ac712-03c0-4451-aa6f-1606be0bbebe | 90bfebed-7a0d-418b-af8a-575cecf4f7d0 | Green Tea | Beverages | 2 | pcs | 1 |
+3f3ac712-03c0-4451-aa6f-1606be0bbebe | 90bfebed-7a0d-418b-af8a-575cecf4f7d0 | Green Tea | Beverages | 2 | pcs | 1 | -

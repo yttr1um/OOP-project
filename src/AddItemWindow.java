@@ -99,6 +99,9 @@ public class AddItemWindow extends JDialog {
         String unit = unitInput.getText();
         int threshold = Integer.parseInt(thresholdInput.getText());
         String expiryDate = expiryDateInput.getText();
+        if (expiryDate.trim().isEmpty()) {
+            expiryDate = "-";
+        }
 
         return new PantryItem(userId, name, category, quantity, unit, threshold, expiryDate);
     }

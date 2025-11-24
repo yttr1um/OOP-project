@@ -70,13 +70,18 @@ public class EditItemWindow extends JDialog {
                 return;
             }
 
+            String newExpiryDate = expiryDateInput.getText();
+            if (newExpiryDate.trim().isEmpty()) {
+                newExpiryDate = "-";
+            }
+
             editedRow = new Object[] {
                     nameInput.getText(),
                     categoryInput.getText(),
                     Integer.parseInt(quantityInput.getText()),
                     unitInput.getText(),
                     Integer.parseInt(thresholdInput.getText()),
-                    expiryDateInput.getText()
+                    newExpiryDate
             };
 
             dispose();

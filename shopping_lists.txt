@@ -5,4 +5,3 @@ f9062cc5-7a57-40b4-b5e7-a454ab3a9d83 3f3ac712-03c0-4451-aa6f-1606be0bbebe Tomato
 f9062cc5-7a57-40b4-b5e7-a454ab3a9d83 3f3ac712-03c0-4451-aa6f-1606be0bbebe Feta Cheese 0 kg Pending 2025-11-24
 f9062cc5-7a57-40b4-b5e7-a454ab3a9d83 3f3ac712-03c0-4451-aa6f-1606be0bbebe Blueberries 3 pcs Pending 2025-11-24
 f9062cc5-7a57-40b4-b5e7-a454ab3a9d83 3f3ac712-03c0-4451-aa6f-1606be0bbebe Cinnamon 1 pcs Pending 2025-11-24
-f9062cc5-7a57-40b4-b5e7-a454ab3a9d83 3f3ac712-03c0-4451-aa6f-1606be0bbebe new item 1 item Pending 2025-11-24
